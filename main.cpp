@@ -1,5 +1,6 @@
 #include <iostream>
-#include "peta.hpp"
+#include "arena.hpp"
+#include "objek.hpp"
 
 using namespace std;
 
@@ -10,9 +11,15 @@ int main (){
     //Node node2(17, 7, false, false, true, false, true, false);
     //PrintPeta(arena, 20, node1);
     //PrintPeta(arena, 20, node2);
-    Robot robot("south",  "east", "west");
-    cout << robot.getFront() << endl;
-    cout << robot.getRight() << endl;
-    cout << robot.getLeft() << endl;
+    //Bikin objek robot pake pointer
+    Robot* robot = new Robot("south",  "east", "west"); //alokasi memori pointer
+    cout << robot->getFront() << endl;
+    cout << robot->getRight() << endl;
+    cout << robot->getLeft() << endl;
+    robot->BelokKanan(*robot);
+    robot->BelokKanan(*robot);
+    cout << robot->getFront() << endl;
+    cout << robot->getRight() << endl;
+    cout << robot->getLeft() << endl;
     return 0;
 }
