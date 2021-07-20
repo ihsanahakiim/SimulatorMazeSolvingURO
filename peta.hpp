@@ -19,7 +19,7 @@ void PrintPeta(char** peta, int n_peta);
 char** BuatPeta(int n_peta){
     // Buat baris yang berisi pointer ke elemen masing-masing baris
     char** peta = new char*[n_peta];
-    // Isi masing-masing baris dengan elemen kolom
+    // Isi masing-masing baris dengan elemen kolom. Alokasi memori random pointer ke memori statis
     for(int i=0; i<n_peta; i++){
         peta[i] = new char[n_peta];
     } 

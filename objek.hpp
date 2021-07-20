@@ -9,18 +9,23 @@ using namespace std;
 class Robot {
     private:
         string front_side;
+        string left, right;
         int x, y;
     public:
-        Robot(string hadap);
+        Robot(string hadap, string left, string kanan);
         ~Robot();
-        void setHadap(string hadap);
-        string getHadap();
+        void setRobot(string hadap, string left, string right);
+        string getFront();
+        string getLeft();
+        string getRight();
         void setLoc(int x, int y);
 };
 
 //Implementasi method kelas Robot
-Robot::Robot(string hadap){
+Robot::Robot(string hadap, string left, string right){
     this->front_side = hadap;
+    this->left = left;
+    this->right = right;
 }
 //dtor
 Robot::~Robot(){
@@ -31,12 +36,22 @@ void Robot::setLoc(int x, int y){
     this->y = y;
 }
 
-void Robot::setHadap(string hadap) {
+void Robot::setRobot(string hadap, string left, string right) {
     this->front_side = hadap;
+    this->left = left;
+    this->right = right;
 }
 
-string Robot::getHadap() {
+string Robot::getFront() {
     return this->front_side;
+}
+
+string Robot::getLeft() {
+    return this->left;
+}
+
+string Robot::getRight() {
+    return this->right;
 }
 
 //Class Node
@@ -45,11 +60,12 @@ class Node {
         int x, y;
         bool isLilinAround;
         bool isDollAround;
-        bool east, west, north, south;
+        int east, west, north, south;
+        bool LineDoor;
     public:
-        Node(int x, int y, bool isLilinAround, bool isDollAround, bool north, bool east, bool south, bool west);
+        Node(int x, int y, bool isLilinAround, bool isDollAround, int north, int east, int south, int west);
         ~Node();
-        void setNode(int x, int y, bool isLilinAround, bool isDollAround, bool north, bool east, bool south, bool west);
+        void setNode(int x, int y, bool isLilinAround, bool isDollAround, int north, int east, int south, int west);
         bool getLilinStatus();
         bool getDollStatus();
         int getX();
@@ -57,7 +73,7 @@ class Node {
 };
 
 //Implementasi methode kelas Node
-Node::Node(int x, int y, bool isLilinAround, bool isDollAround, bool north, bool east, bool south, bool west){
+Node::Node(int x, int y, bool isLilinAround, bool isDollAround, int north, int east, int south, int west){
     this->x = x;
     this->y = y;
     this->isLilinAround = isLilinAround;
@@ -71,7 +87,7 @@ Node::Node(int x, int y, bool isLilinAround, bool isDollAround, bool north, bool
 Node::~Node(){
 }
 
-void Node::setNode(int x, int y, bool isLilinAround, bool isDollAround, bool north, bool east, bool south, bool west) {
+void Node::setNode(int x, int y, bool isLilinAround, bool isDollAround, int north, int east, int south, int west) {
     this->x = x;
     this->y = y;
     this->isLilinAround = isLilinAround;
